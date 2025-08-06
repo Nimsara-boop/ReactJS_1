@@ -1,62 +1,34 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import Search from './components/Search.jsx'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
+export const App = () => {
 
-//Class Components
-
-const Card = ({ title, ratings, isCool, actors }) => {
-  const [count, setCount] = useState(0);
-  const [hasLiked, setHasLiked] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   
-  useEffect(() => {
-    console.log(`${title} has been liked: ${hasLiked}`);
-  }, [title, hasLiked]
-  );
+  useEffect(effect: () => {
+    
+  })
 
-    useEffect(() => {
-    console.log(`${title} has a click count of ${count}`);
-  }, [title, count]
-  );
-
-  //common useEfect
-  useEffect(() => {
-    console.log('card rendered');
-  },[]);
-
-
-  
   return (
-    <div className='card' onClick={() => setCount((prevState) => prevState+1)}>
-      <h2>{title} <br/>{count || null}</h2>
+    <main>
 
-      <button onClick={(event) => {
-            event.stopPropagation();
-             setHasLiked(!hasLiked);}
-        }>
+      <div className='pattern' />
+      <div className="wrapper">
+        <header>
+          <img src="./public/hero-img.png" alt="HeroBanner"></img>
 
-        {hasLiked ? 'Liked' : 'Like'}
-      </button>
+          <h1>Find <span className='text_gradient'>Movies</span> You'll Love</h1>
+        </header>
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-    </div>
+        <h1 className="text-white">{searchTerm}</h1>
+
+
+      </div>
+    </main>
   )
 }
 
-const App1 = () => {
-
-
-  return (
-    <div className="card-container">
-
-      <Card title="Star Wars" ratings={5} isCool={true} actors={[{ name: 'actors' }]} />
-      <Card title="Lion King" />
-      <Card title="Avatar" />
-
-    </div>
-  )
-}
-
-
-
-export default App1
+export default App
