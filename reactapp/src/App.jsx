@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import Spinner from './components/spinner.jsx'
 import MovieCard from './components/MovieCard.jsx'
 import { useDebounce } from 'react-use'
+import { updateSearchcount } from './appwrite.js'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3/discover/movie';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -54,7 +55,7 @@ export const App = () => {
 
       setMovieList(data.results || []);
 
-
+      updateSearchcount();
 
     }
 
